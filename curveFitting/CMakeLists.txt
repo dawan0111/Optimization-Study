@@ -11,10 +11,18 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(${CMAKE_SOURCE_DIR}/cmake/find_matplotlib.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/find_eigen.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/find_ceres.cmake)
 
 add_executable(GAUSS_NEWTON gaussNewton.cpp)
+add_executable(CERES ceres.cpp)
 
 target_link_libraries(GAUSS_NEWTON PRIVATE
     matplotlib_cpp::matplotlib_cpp
     ${EIGEN3_LIBS}
+)
+
+target_link_libraries(CERES PRIVATE
+    matplotlib_cpp::matplotlib_cpp
+    ${EIGEN3_LIBS}
+    ${CERES_LIBRARIES}
 )

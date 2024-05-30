@@ -114,7 +114,7 @@ int main(int argc, char **argv) {
     plt::title("cost");
     plt::plot(iter_data, cost_data, "bo-");
 
-    plt::pause(2);
+    plt::pause(1);
   }
 
   std::cout << "estimated abc = " << ae << ", " << be << ", " << ce
