@@ -91,10 +91,13 @@ int main(int argc, char **argv) {
     y_real_data.push_back(y);
   }
 
-  typedef g2o::BlockSolver<g2o::BlockSolverTraits<3, 1>> BlockSolverType;
+  typedef g2o::BlockSolver<g2o::BlockSolverTraits<3, 1>>
+      BlockSolverType; // 최적화 해야하는 변수의 타입
   typedef g2o::LinearSolverDense<BlockSolverType::PoseMatrixType>
       LinearSolverType;
 
+  // LinearSolverDense
+  // https://docs.ros.org/en/fuerte/api/re_vision/html/namespaceg2o.html
   auto solver = new g2o::OptimizationAlgorithmGaussNewton(
       g2o::make_unique<BlockSolverType>(g2o::make_unique<LinearSolverType>()));
   g2o::SparseOptimizer optimizer;
